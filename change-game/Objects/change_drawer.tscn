@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://csuvjhntypfrt"]
+
+[ext_resource type="Texture2D" uid="uid://dbw0l4oxy4njh" path="res://Assets/Temp_Change_Drawers.png" id="1_l2pas"]
+
+[node name="Change_Drawer" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l2pas")

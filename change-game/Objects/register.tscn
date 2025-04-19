@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d06k0ptynsghw"]
+
+[ext_resource type="Texture2D" uid="uid://qee4fixugjbm" path="res://Assets/Temp_Register.png" id="1_lpp5b"]
+
+[sub_resource type="Theme" id="Theme_lpp5b"]
+default_font_size = 70
+
+[node name="Register" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lpp5b")
+hframes = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2D"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = -186.0
+offset_right = -365.0
+offset_bottom = -87.0
+grow_horizontal = 2
+theme = SubResource("Theme_lpp5b")
+text = "$3.90"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

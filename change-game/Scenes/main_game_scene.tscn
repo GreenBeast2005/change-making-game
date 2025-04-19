@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://4b5jrjr4saus"]
+
+[ext_resource type="Script" uid="uid://d3by7hm3endrg" path="res://Scripts/Game_Manager.gd" id="1_8mtfu"]
+[ext_resource type="PackedScene" uid="uid://d06k0ptynsghw" path="res://Objects/register.tscn" id="2_syfkn"]
+[ext_resource type="PackedScene" uid="uid://brapwxilftkt1" path="res://Objects/customer.tscn" id="2_wb2by"]
+[ext_resource type="PackedScene" uid="uid://csuvjhntypfrt" path="res://Objects/change_drawer.tscn" id="4_t40n3"]
+
+[sub_resource type="Gradient" id="Gradient_x83m5"]
+colors = PackedColorArray(0.819309, 0.957211, 0.701455, 1, 0.923925, 0.782748, 0.875125, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bkcmx"]
+gradient = SubResource("Gradient_x83m5")
+
+[node name="Main_Game_Scene" type="Node2D"]
+script = ExtResource("1_8mtfu")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960.5, 541.5)
+scale = Vector2(7.50391, 1085)
+texture = SubResource("GradientTexture1D_bkcmx")
+
+[node name="Register" parent="." instance=ExtResource("2_syfkn")]
+position = Vector2(267, 701)
+
+[node name="Customer" parent="." instance=ExtResource("2_wb2by")]
+position = Vector2(931, 545)
+
+[node name="Change_Drawer" parent="." instance=ExtResource("4_t40n3")]
+position = Vector2(2049, 859)
