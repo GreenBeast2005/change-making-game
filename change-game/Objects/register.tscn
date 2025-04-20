@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://d06k0ptynsghw"]
+[gd_scene load_steps=4 format=3 uid="uid://d06k0ptynsghw"]
 
+[ext_resource type="Script" uid="uid://dauhuebga0ses" path="res://Scripts/register.gd" id="1_k3v2l"]
 [ext_resource type="Texture2D" uid="uid://qee4fixugjbm" path="res://Assets/Temp_Register.png" id="1_lpp5b"]
 
 [sub_resource type="Theme" id="Theme_lpp5b"]
 default_font_size = 70
 
 [node name="Register" type="Node2D"]
+script = ExtResource("1_k3v2l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lpp5b")
@@ -22,4 +24,20 @@ grow_horizontal = 2
 theme = SubResource("Theme_lpp5b")
 text = "$3.90"
 
+[node name="Button" type="Button" parent="Sprite2D"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -344.0
+offset_right = -305.0
+offset_bottom = -281.0
+grow_horizontal = 2
+grow_vertical = 0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="mouse_entered" from="Sprite2D/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite2D/Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]

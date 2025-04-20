@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://u4mr4byawsih"]
+
+[ext_resource type="Script" uid="uid://cifw1qosyf1d4" path="res://Scripts/coin_collection.gd" id="1_u7mpj"]
+[ext_resource type="Texture2D" uid="uid://cbn8jfl62bhwj" path="res://Assets/Coin.png" id="2_k8qme"]
+
+[node name="Coin_Collection" type="Node2D"]
+script = ExtResource("1_u7mpj")
+spawn_area = Rect2(0, 0, 180, 256)
+texture = ExtResource("2_k8qme")

@@ -1,29 +1,73 @@
-[gd_scene load_steps=7 format=3 uid="uid://4b5jrjr4saus"]
+[gd_scene load_steps=8 format=3 uid="uid://4b5jrjr4saus"]
 
 [ext_resource type="Script" uid="uid://d3by7hm3endrg" path="res://Scripts/Game_Manager.gd" id="1_8mtfu"]
 [ext_resource type="PackedScene" uid="uid://d06k0ptynsghw" path="res://Objects/register.tscn" id="2_syfkn"]
 [ext_resource type="PackedScene" uid="uid://brapwxilftkt1" path="res://Objects/customer.tscn" id="2_wb2by"]
 [ext_resource type="PackedScene" uid="uid://csuvjhntypfrt" path="res://Objects/change_drawer.tscn" id="4_t40n3"]
+[ext_resource type="PackedScene" uid="uid://bev00rho00ivr" path="res://Objects/text_popup.tscn" id="5_t40n3"]
 
 [sub_resource type="Gradient" id="Gradient_x83m5"]
 colors = PackedColorArray(0.819309, 0.957211, 0.701455, 1, 0.923925, 0.782748, 0.875125, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bkcmx"]
 gradient = SubResource("Gradient_x83m5")
+width = 1920
 
 [node name="Main_Game_Scene" type="Node2D"]
 script = ExtResource("1_8mtfu")
+customers_til_shop = 30
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(960.5, 541.5)
-scale = Vector2(7.50391, 1085)
+[node name="StuffThatMoves" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="StuffThatMoves"]
+position = Vector2(0, 540)
+scale = Vector2(2, 1080)
 texture = SubResource("GradientTexture1D_bkcmx")
 
-[node name="Register" parent="." instance=ExtResource("2_syfkn")]
+[node name="Register" parent="StuffThatMoves" instance=ExtResource("2_syfkn")]
 position = Vector2(267, 701)
+price_due = 6.7
 
-[node name="Customer" parent="." instance=ExtResource("2_wb2by")]
-position = Vector2(931, 545)
+[node name="Customer" parent="StuffThatMoves" instance=ExtResource("2_wb2by")]
+customer_money = 10.0
 
-[node name="Change_Drawer" parent="." instance=ExtResource("4_t40n3")]
-position = Vector2(2049, 859)
+[node name="Change_Drawer" parent="StuffThatMoves" instance=ExtResource("4_t40n3")]
+position = Vector2(1920, 890)
+
+[node name="TextPopup" parent="StuffThatMoves" instance=ExtResource("5_t40n3")]
+position = Vector2(454, 231)
+minX = 500
+maxX = 1420
+minY = 200
+maxY = 600
+minAngle = -10
+maxAngle = 10
+
+[node name="UpgradeShopTitle" type="RichTextLabel" parent="StuffThatMoves"]
+offset_left = -1297.0
+offset_top = 43.0
+offset_right = -742.0
+offset_bottom = 158.0
+theme_override_colors/default_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/normal_font_size = 80
+text = "Upgrade Shop"
+
+[node name="Score" type="RichTextLabel" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 986.0
+offset_right = 796.0
+offset_bottom = 1068.0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "Points: "
+vertical_alignment = 1
+
+[connection signal="gave_sufficient_change" from="StuffThatMoves/Register" to="." method="_on_register_gave_sufficient_change"]
+[connection signal="register_opened" from="StuffThatMoves/Register" to="." method="_on_register_register_opened"]
+[connection signal="accepted_customer_money" from="StuffThatMoves/Customer" to="." method="_on_customer_accepted_customer_money"]
+[connection signal="exited" from="StuffThatMoves/Customer" to="." method="_on_customer_exited"]
+[connection signal="coin_selected" from="StuffThatMoves/Change_Drawer" to="." method="_on_change_drawer_coin_selected"]

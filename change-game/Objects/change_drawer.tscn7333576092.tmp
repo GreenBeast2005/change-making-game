@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://csuvjhntypfrt"]
+
+[ext_resource type="Texture2D" uid="uid://dbw0l4oxy4njh" path="res://Assets/Temp_Change_Drawers.png" id="1_l2pas"]
+[ext_resource type="Script" uid="uid://banfhjbevntbl" path="res://Scripts/change_drawer.gd" id="1_nmw6t"]
+[ext_resource type="Script" uid="uid://b5m6vrl830cg4" path="res://Scripts/change_drawer_buttons.gd" id="3_15tte"]
+
+[node name="Change_Drawer" type="Node2D"]
+script = ExtResource("1_nmw6t")
+coins = Array[float]([1.0, 0.25, 0.1, 0.05, 0.01])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l2pas")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -1021.0
+offset_top = -120.0
+offset_right = 957.0
+offset_bottom = 125.0
+theme_override_constants/separation = 200
+script = ExtResource("3_15tte")
